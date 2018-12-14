@@ -7,3 +7,4 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 资料：在idea中打包jar：https://www.jianshu.com/p/55c0a0932be1    
 - 资料：构建聚合工程：https://blog.csdn.net/kingcat666/article/details/79071802    
 - 资料：idea部署Tomcat：https://segmentfault.com/a/1190000003827831  。
+- 资料：idea的mybaits插件逆向工程：https://blog.csdn.net/qq_23703157/article/details/78681088 (收费。算了)
