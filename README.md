@@ -1,6 +1,6 @@
 # taotao
 ssm、taotao商城
-ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工程。这个老师将的非常好。
+ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工程。这个老师讲的非常好。
 
 
 
@@ -8,9 +8,20 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 问题1：父项目的pom.xml定义所需依赖的jar包的版本即可，子项目只需要简单引用。但是尝试多次，子项目加载时总是报如上缺少jar包版本信息的错误。  
 解决：设置父项目的依赖jar包时外层少加了这个依赖版本管理的标签<dependencyManagement>。也就是parent这个项目的依赖需要加上这个dependencyManagement标签。
 - 问题2：逆向工程中配置的数据库信息，一直报错：时区问题。
-  解决：https://blog.csdn.net/qq_36350532/article/details/81534812 
+  解决：https://blog.csdn.net/qq_36350532/article/details/81534812   
+- 问题3：不能直接新建Java类文件。   
+  解决：idea中Java类只能在指定类型的文件夹下新建。打开File下的Project Structure，需要指定该文件夹为source类型。
+- 问题4：log4j:WARN Please initialize the log4j system properly.报错。
+  解决：https://blog.csdn.net/u010180815/article/details/52260170 没有给日志配置属性。
+- 问题5：org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs报错。   
+  解决：在Tomcat安装目录下的配置文件logging.properties文件加入org.apache.jasper.level = FINEST
 - 资料：在idea中打包jar：https://www.jianshu.com/p/55c0a0932be1    
 - 资料：构建聚合工程：https://blog.csdn.net/kingcat666/article/details/79071802    
 - 资料：idea部署Tomcat：https://segmentfault.com/a/1190000003827831  。
-
-逆向工程流程：首先新建maven工程，在pom.xml中添加mybatis-generator-core、mysql-connector-java依赖。接着在generatorConfig.xml中配置数据库信息，表信息。我选择一步到位，直接生成在..\taotaomanager\taotao-manager-pojo\src\main\java\位置
+  
+   
+第一步：逆向工程：首先新建maven工程，在pom.xml中添加mybatis-generator-core、mysql-connector-java依赖。接着在generatorConfig.xml中配置数据库信息，表信息。我选择一步到位，直接生成在..\taotaomanager\taotao-manager-pojo\src\main\java\位置。   
+第二步：ssm整合。spring容器包括DAO、service为父容器，而springMVC容器装的是controller为子容器。分开扫描保证相应包加载在相应容器中。      
+- DAO层。使用mybatis框架。与数据库进行直接联系。
+- Service层。加载service包。本来事务可以在里面配，选择在单独在一个xml配置。
+- 表现层，就是springMVC.xml。
