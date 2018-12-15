@@ -32,3 +32,12 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - DAO层。使用mybatis框架。与数据库进行直接联系。
 - Service层。加载service包。本来事务可以在里面配，选择在单独在一个xml配置。
 - 表现层，就是springMVC.xml。
+
+第三步。开始编码。页面切换控制器;showIndex函数返回“index”。根据springMVC中的配置。进入index.jsp页面
+````
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+````
