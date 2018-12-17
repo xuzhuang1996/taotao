@@ -41,3 +41,6 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
         <property name="suffix" value=".jsp" />
     </bean>
 ````
+
+第四步，在秒杀项目中，控制层与前台交互，需要新建数据结构来统一。而这个交互的数据结构都在用，因此在common工程中新建添加pojo包。保存交互用的数据结构。在service层写数据库交互的逻辑，在控制层调用这些逻辑，并进行简单请求响应的分支处理。   
+首先是getItemList这个方法。流程：简单说，浏览器输出地址前台请求，dispatcher根据地址，分发到控制器下的该方法，返回EUDataGridResult。由jq的easyui获取处理，之前jsp中是通过这种方式拿值${sk.startTime}。现在就是easyui处理，暂时不研究这个(IDEA启动Tomcat老自动打开的那个页面，在配置下的server下的URL更改，而决定具体部署为那个网址，在Deployment下面的ApplicationContext)。
