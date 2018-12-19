@@ -46,4 +46,5 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 首先是getItemList这个方法。**流程**：简单说，浏览器输出地址前台请求，点击那个查询商品，而attributes:{'url':'item-list'}，也就是请求item-list，然后dispatcher传给pageController中{page}，返回item—list，到视图解析器找item-list的页面。于是找到了web-inf下的item—list.jsp页面，而该jsp的参数为data-options="url:'/item/list'，进行请求/item/list。   
 接着dispatcher根据地址，分发到控制器，pageController由于只处理/{}的情况，因此不处理，而另一个控制器ItemController中正好可以处理这个URL，进入getItemList方法。然后返回EUDataGridResult。由jq的easyui获取处理，之前jsp中是通过这种方式拿值${sk.startTime}。现在就是easyui处理，暂时不研究这个(IDEA启动Tomcat老自动打开的那个页面，在配置下的server下的URL更改，而决定具体部署为那个网址，在Deployment下面的ApplicationContext)。
 
-第五步。图片服务器。我全程在Windows上处理，没有Linux。首先是配置Nginx（安装完后需要在配置文件加入一个服务，并自定义其根目录），接着在Windows开启FTP服务，指明其服务的目录为该根目录，该服务用于文件传输，将文件传输到Nginx服务器的文件目录下（如果在Linux下，老师的vsftp是一个安全、高速、稳定的FTP服务器，就不用开启，直接安装）。电脑必须有密码，不然在代码中无法登陆这个站点。
+第五步。图片服务器。我全程在Windows上处理，没有Linux。首先是配置Nginx（安装完后需要在配置文件加入一个服务，并自定义其根目录），接着在Windows开启FTP服务，指明其服务的目录为该根目录，该服务用于文件传输，将文件传输到Nginx服务器的文件目录下（如果在Linux下，老师的vsftp是一个安全、高速、稳定的FTP服务器，就不用开启，直接安装）。电脑必须有密码，不然在代码中无法登陆这个站点。   
+总的来说，相当于2台设备。一台客户端a，一台服务器b。其中b有图片服务器Nginx，a为了上传图片到b的这个nginx服务器，使用ftp服务，因此b需要开启ftp服务供a访问。现在a开始上传文件，文件通过ftp服务上传到ftp指定的位置，而这个位置与nginx服务器存放文件的位置一样（不然要nginx干嘛呢）,以供下次访问图片时Nginx来进行调度。
