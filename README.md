@@ -25,6 +25,7 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 资料：在idea中打包jar：https://www.jianshu.com/p/55c0a0932be1    
 - 资料：构建聚合工程：https://blog.csdn.net/kingcat666/article/details/79071802    
 - 资料：idea部署Tomcat：https://segmentfault.com/a/1190000003827831  。
+- 资料：jsonp的初见：https://blog.csdn.net/hansexploration/article/details/80314948
   
    
 第一步：逆向工程：首先新建maven工程，在pom.xml中添加mybatis-generator-core、mysql-connector-java依赖。接着在generatorConfig.xml中配置数据库信息，表信息。我选择一步到位，直接生成在..\taotaomanager\taotao-manager-pojo\src\main\java\位置。最后需要强调的是：需要在mapper这个工程添加includes等节点，不添加节点mybatis的mapper.xml文件都会被漏掉。pojo不用是因为它没有xml.          
