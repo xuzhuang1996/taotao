@@ -20,6 +20,9 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 问题7：nested exception is java.lang.NoClassDefFoundError: com/fasterxml/jackson/databind/exc/InvalidDefinitionException   
   解决：spring版本问题，我做的时候是spring5.0以上.视频中是5.0以下。我将jackson.version版本改成2.9.4就可以了，之前的2.4.2不行。报错。
   
+- 问题8：同时运行多个Tomcat出错。   
+  解决：首先是端口，jmx等。其次，deployment下面的部署地址要改，在idea中，如果application context的地址如果是/。说明部署到Tomcat的webapps下的root目录下。因此多个项目同时启动Tomcat时，必须有各自的名字。
+  
   ----------------------
   
 - 资料：在idea中打包jar：https://www.jianshu.com/p/55c0a0932be1    
