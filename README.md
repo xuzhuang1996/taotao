@@ -59,4 +59,5 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 
 后面的：   
 1.首页左侧有一个商品分类。本来是ajax向protal请求，然后protal调用rest的服务，但是ajax直接向rest工程请求数据，返回的是json数据，而且此时是在protal工程中发布的网页，因此客户端现在请求的数据，是通过rest工程中的服务获取的，出现跨域问题，因此需要jsonp的方式来获取json数据。
-2.之后是首页轮播图。浏览器请求protal，然后protal调用rest的服务，这个跨域进行调用controller，选择httpclient来模拟客户端，来请求服务。就是现在是2个工程，一个工程想掉另一个的内容，就是通过httpclient来模拟调用。（1.2为啥这么调服务就看文档就行了）。
+2.之后是首页轮播图。浏览器请求protal，然后protal调用rest的服务，这个跨域进行调用controller，选择httpclient来模拟客户端，来请求服务。就是现在是2个工程，一个工程想掉另一个的内容，就是通过httpclient来模拟调用。（1.2为啥这么调服务就看文档就行了）。   
+3.solr的使用：总结：绝对不要到博客里找解决方案，在版本不同的前提下。我用的solr7.6，不用在Tomcat下部署，直接按照文档就能使用。同时中文分析器，网上百度查找你就玩了，Google搜索对应版本的中文分析器不然报错解决不了。
