@@ -23,7 +23,9 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 问题8：同时运行多个Tomcat出错。   
   解决：首先是端口，jmx等。其次，deployment下面的部署地址要改，在idea中，如果application context的地址如果是/。说明部署到Tomcat的webapps下的root目录下。因此多个项目同时启动Tomcat时，必须有各自的名字。
   
-- 问题9：中途加了pojo，结果编译不了。CTRL+shift+F9
+- 问题9：中途加了pojo，结果编译不了。CTRL+shift+F9  
+ 
+- 问题10：不同工程的相互引用。一定要注意包名的定义，如sso工程下的包，至少也要来一个sso.dao不能直接就dao，比如sso引用了manger下的maper工程，引用包的时候，除了在pom.xml中添加依赖，在引用包需要注意区分自己的dao与mapper的dao包。
   
   ----------------------
   
