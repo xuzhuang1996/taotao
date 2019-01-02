@@ -36,7 +36,7 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
   
    
 第一步：逆向工程：首先新建maven工程，在pom.xml中添加mybatis-generator-core、mysql-connector-java依赖。接着在generatorConfig.xml中配置数据库信息，表信息。我选择一步到位，直接生成在..\taotaomanager\taotao-manager-pojo\src\main\java\位置。最后需要强调的是：需要在mapper这个工程添加includes等节点，不添加节点mybatis的mapper.xml文件都会被漏掉。pojo不用是因为它没有xml.          
-第二步：ssm整合。spring容器包括DAO、service为父容器，而springMVC容器装的是controller为子容器。分开扫描保证相应包加载在相应容器中。      
+第二步：ssm整合。spring容器包括DAO、service为父容器，而springMVC容器装的是controller为子容器。分开扫描保证相应包加载在相应容器中。如果都放到一个spring容器，而这时的SpringMVC容器中没有对象，没有对象就没有Controller，所以加载处理器，适配器的时候就会找不到映射对象，映射关系。        
 - DAO层。使用mybatis框架。与数据库进行直接联系。
 - Service层。加载service包。本来事务可以在里面配，选择在单独在一个xml配置。
 - 表现层，就是springMVC.xml。
