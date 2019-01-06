@@ -68,3 +68,10 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 4.solr工程：首先需要查询所有MySQL数据库中的内容，导入solr进行建立索引库，因此需要对多表查询数据，所以自己写DAO，包括接口以及mapper.xml，来动态生成DAO。接着，现在需要导入solr建立索引库，因此将DAO查询到的数据进行遍历插入索引库（这里需要用solrj，视频中的类过时了，在spring-solr.xml配置HttpsolrClient对象，在DAO查到数据的时候注入solrClient对象，进行插入操作）
 
 5.**redis集群**。首先虚拟机不要下载vmare了，就用window10自带的。其次，按照redis文档中说的配置好conf文件，但是如果protected-method不改为no的话，显示连接不上，为了连接成功，且不改变bind的ip属性值（每次改6个conf文件不好玩），我改了保护模式protected-method，（应该可以通过设置密码的方式，但文档没找到），并且创建集群的时候我直接在redis的服务器下用的ip地址，而不是127.0.0.1，不然jedis连不上。所以重新构建集群使用：./redis-trib.rb create --replicas 1 192.168.0.104:7001 192.168.0.104:7002  192.168.0.104:7003  192.168.0.104:7004  192.168.0.104:7005  192.168.0.104:7006。另外让集群停止的方式，暂时没找到命令，选择停止redis服务后，将启动服务时生成的文件全删掉，只留下配置文件conf。重新启动。**附加**：为了不同时开启6个终端来开启6个redis服务，可以将所有服务命令放在一起新建一个.sh文件，并且在每一条命令后面加一个&符号，表示从后台启动进程。
+
+
+
+6.springMVC配置问题。在web.xml中    
+
+- 如果dispatchServlet的url-pattern为/，表示所有访问的地址都由dispatchservlet处理。而对于静态文件，需要单独配置不让dispatchServlet处理。    
+- 如果是/*, 因为处理完后最终转发到jsp页面的时候，还是会由dispatchservlet处理。但是dispatchservlet只能处理controller，所以会404
