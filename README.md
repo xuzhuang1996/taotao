@@ -21,7 +21,7 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
   解决：spring版本问题，我做的时候是spring5.0以上.视频中是5.0以下。我将jackson.version版本改成2.9.4就可以了，之前的2.4.2不行。报错。
   
 - 问题8：同时运行多个Tomcat出错。   
-  解决：首先是端口，jmx等。其次，deployment下面的部署地址要改，在idea中，如果application context的地址如果是/。说明部署到Tomcat的webapps下的root目录下。因此多个项目同时启动Tomcat时，必须有各自的名字。
+  解决：首先是端口，jmx等。其次，deployment下面的部署地址要改，在idea中，如果application context的地址如果是/。说明部署到Tomcat的webapps下的root目录下。因此多个项目同时启动Tomcat时，必须有各自的名字。另外，在springmvc的前端控制器中配置的DispatcherServlet，其url-pattern如果配置/search/*，与idea中配置部署的http://localhost:8083/xu_search 无关，现在映射是http://localhost:8083/xu_search/search/* ,这里其实不推荐/*的形式。而在jsp中的URL，通常来说，不加斜杠的形式（如”example.jsp”)请求的是相对于当前页面路径的资源 http://localhost:8080/webapp/examole； 加斜杠的形式（”/example.jsp”)请求的是服务器根目录下的资源，完整的url是由服务器地址+/example构成的:http: //localhost:8080/example。
   
 - 问题9：中途加了pojo，结果编译不了。CTRL+shift+F9  
  
