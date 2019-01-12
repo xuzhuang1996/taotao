@@ -10,7 +10,7 @@ ssm入门建议：https://www.imooc.com/u/2145618/courses?sort=publish 秒杀工
 - 问题2：逆向工程中配置的数据库信息，一直报错：时区问题。
   解决：https://blog.csdn.net/qq_36350532/article/details/81534812   
 - 问题3：不能直接新建Java类文件。   
-  解决：idea中Java类只能在指定类型的文件夹下新建。打开File下的Project Structure，需要指定该文件夹为source类型。
+  解决：idea中Java类只能在指定类型的文件夹下新建。打开File下的Project Structure，需要指定该文件夹为source类型。或者右键markDir——>source. 
 - 问题4：log4j:WARN Please initialize the log4j system properly.报错。   
   解决：https://stackoverflow.com/questions/9691456/log4j-spring-mvc-no-appenders-could-be-found-for-logger 没有给日志配置属性。
 - 问题5：org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs报错。   
